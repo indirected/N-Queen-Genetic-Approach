@@ -5,6 +5,8 @@
 #include "type.h"
 int flip(double p);
 void randomize(POPULATION *p);
+int* CreateShuffledArray(int n) {
+
 
 void statistics(POPULATION *p, IPTR pop);
 
@@ -116,8 +118,9 @@ void initPop(POPULATION *p)
 	 pj = &(p->np[i]);
 	 *pj->chrom = (int *) calloc (p->lchrom, sizeof(int));
 
+
 	 for (j = 0; j < p->lchrom; j++){
-		pi->chrom[j] = random(6)+1;
+		 *pi->chrom = CreateShuffledArray(QUEENS);
 	 }
 	 pi->fitness  = eval(p, pi);
 
