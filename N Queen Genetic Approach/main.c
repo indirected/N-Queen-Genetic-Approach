@@ -26,4 +26,12 @@ main(int argc, char *argv[])
     p->op = p->np;
     p->np = tmp;
   }
+
+
+
+    /*//To Test Eval
+    POPULATION a;
+    a.lchrom = 8;
+    INDIVIDUAL b = { {1,2,3,4,5,6,7,8} };
+    eval(&a, &b);*/
 }

@@ -120,7 +120,7 @@ void initPop(POPULATION *p)
 
 
 	 for (j = 0; j < p->lchrom; j++){
-		 *pi->chrom = CreateShuffledArray(QUEENS);
+		 *pi->chrom = CreateShuffledArray(p->lchrom);
 
 	 }
 	 pi->fitness  = eval(p, pi);

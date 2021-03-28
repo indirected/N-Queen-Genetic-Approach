@@ -8,13 +8,21 @@ double binToDec(int *chrom, int l);
 double eval(POPULATION *p, IPTR pj) 
      /* Called from gen.c and init.c */
 {
-  double val;
+  /*double val;
   double square = 0.0;
 
   val = decode(pj, 0, p->lchrom); 
   square = val * val;
 
-  return square;
+  return square;*/
+    int GuardSum = 0;
+    int GuardMax = p->lchrom * (p->lchrom - 1) / 2;
+    for (int i = 1; i < p->lchrom; i++) {
+        GuardSum += GuardCount(pj, i);
+    }
+    //printf("%d", GuardSum);
+
+    return 1 - ((double)GuardSum / GuardMax);
 }
 
 double decode(IPTR pj, int index, int size)
@@ -44,4 +52,17 @@ void decToBin(int ad, int *barray, int size)
     barray[i] = t%2;
     t = t/2;
   }
+}
+
+
+//To Count the Queens that Threat each other from 0 to i
+int GuardCount(IPTR pi, int i) {
+    int count = 0;
+    for (int j = 0; j < i; j++) {
+        if (j != i) {
+            int diff = pi->chrom[i] - pi->chrom[j];
+            if (i - j == diff || i - j == -diff) count++;
+        }
+    }
+    return count;
 }
