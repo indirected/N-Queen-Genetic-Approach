@@ -106,7 +106,7 @@ void initPop(POPULATION *p)
   int i, j;
   FILE *fp;
   double f1;
-
+  int* currentShuffle;
   p->op = (IPTR) calloc (p->popSize, sizeof(INDIVIDUAL));
   p->np = (IPTR) calloc (p->popSize, sizeof(INDIVIDUAL));
 
@@ -118,11 +118,12 @@ void initPop(POPULATION *p)
 	 pj = &(p->np[i]);
 	 *pj->chrom = (int *) calloc (p->lchrom, sizeof(int));
 
-
+	 currentShuffle = CreateShuffledArray(p->lchrom);
 	 for (j = 0; j < p->lchrom; j++){
-		 *pi->chrom = CreateShuffledArray(p->lchrom);
+		 pi->chrom[j] = currentShuffle[j];
 
 	 }
+	 free(currentShuffle);
 	 pi->fitness  = eval(p, pi);
 
   }

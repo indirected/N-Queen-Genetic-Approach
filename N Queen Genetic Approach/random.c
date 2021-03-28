@@ -119,7 +119,7 @@ int rnd(int low, int high)
   Fills it with numbers 1 to n
   Then shuffles it.*/
 int* CreateShuffledArray(int n) {
-    int* arr = (int)malloc(n * sizeof(int));
+    int* arr = (int*)malloc(n * sizeof(int));
     int maxrand = n * 100;
     for (int i = 0; i < n; i++) {
         arr[i] = i+1;
@@ -135,4 +135,5 @@ int* CreateShuffledArray(int n) {
         printf("%d ", arr[i]);
     }
     printf("\n");*/
+    return arr;
 }

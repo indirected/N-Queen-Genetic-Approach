@@ -16,6 +16,7 @@ double eval(POPULATION *p, IPTR pj)
     //printf("%d", GuardSum);
 
     return 1 - ((double)GuardSum / GuardMax);
+    //return (double)GuardMax - GuardSum;
 }
 
 double decode(IPTR pj, int index, int size)

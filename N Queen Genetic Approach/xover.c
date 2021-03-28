@@ -20,7 +20,7 @@ void crossover(POPULATION *p, IPTR p1, IPTR p2, IPTR c1, IPTR c2)
     
     //Crossover Method: Partially-Mapped Crossover
     if(flip(p->pCross)){ //Crossover Happens
-        printf("Entering Crossover.\n");
+        //printf("Entering Crossover.\n");
 
 
         //Copy the Parents in Childs
@@ -39,7 +39,7 @@ void crossover(POPULATION *p, IPTR p1, IPTR p2, IPTR c1, IPTR c2)
             StartPoint = EndPoint;
             EndPoint = t;
         }
-        printf("Start: %d, End: %d\n", StartPoint, EndPoint);
+        //printf("Start: %d, End: %d\n", StartPoint, EndPoint);
 
 
         //Doing the Crossover
