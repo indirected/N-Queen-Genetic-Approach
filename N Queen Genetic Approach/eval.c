@@ -8,13 +8,6 @@ double binToDec(int *chrom, int l);
 double eval(POPULATION *p, IPTR pj) 
      /* Called from gen.c and init.c */
 {
-  /*double val;
-  double square = 0.0;
-
-  val = decode(pj, 0, p->lchrom); 
-  square = val * val;
-
-  return square;*/
     int GuardSum = 0;
     int GuardMax = p->lchrom * (p->lchrom - 1) / 2;
     for (int i = 1; i < p->lchrom; i++) {
