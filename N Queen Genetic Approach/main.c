@@ -34,4 +34,22 @@ main(int argc, char *argv[])
     a.lchrom = 8;
     INDIVIDUAL b = { {1,2,3,4,5,6,7,8} };
     eval(&a, &b);*/
+
+
+    /*//To Test Crossover
+    warmup_random(0.2);
+    POPULATION a;
+    a.lchrom = 6;
+    a.pCross = 1;
+    INDIVIDUAL b = { {1,6,4,2,5,3} };
+    INDIVIDUAL c = { {4,2,5,3,6,1} };
+    INDIVIDUAL d = { {0,0,0,0,0,0} };
+    INDIVIDUAL e = { {0,0,0,0,0,0} };
+
+    crossover(&a, &b, &c, &d, &e);
+    for (int i = 0; i < a.lchrom; i++) printf("%d ", d.chrom[i]);
+    printf("\n");
+    for (int i = 0; i < a.lchrom; i++) printf("%d ", e.chrom[i]);*/
+
+
 }
