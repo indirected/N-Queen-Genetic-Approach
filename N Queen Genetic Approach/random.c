@@ -6,6 +6,7 @@
 
 #define RANCONST 1.0E-9
 #include <stdio.h>
+#include <stdlib.h>
 
 /* GLOBAL VARIABLES */
 
@@ -114,3 +115,24 @@ int rnd(int low, int high)
 }
 
 
+/*Creates an array of size n
+  Fills it with numbers 1 to n
+  Then shuffles it.*/
+int* CreateShuffledArray(int n) {
+    int* arr = (int)malloc(n * sizeof(int));
+    int maxrand = n * 100;
+    for (int i = 0; i < n; i++) {
+        arr[i] = i+1;
+    }
+    
+    for (int i = 0; i < n - 1; i++) {
+        int j = i + rnd(1, maxrand) / (maxrand / (n - i) + 1);
+        int t = arr[j];
+        arr[j] = arr[i];
+        arr[i] = t;
+    }
+   /* for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");*/
+}
