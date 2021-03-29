@@ -5,6 +5,7 @@
 int rnd(int low, int high);
 int flip(double);
 int muteX(POPULATION *p, int pa, int pb);
+void Mutex(POPULATION* p, int* c);
 
 void crossover(POPULATION *p, IPTR p1, IPTR p2, IPTR c1, IPTR c2)
 {
@@ -67,7 +68,42 @@ void crossover(POPULATION *p, IPTR p1, IPTR p2, IPTR c1, IPTR c2)
             ci2[i] = pi2[i];
         }
     }
+
+    Mutex(p, ci1);
+    Mutex(p, ci2);
 }
+
+
+//Displacement Mutation
+void Mutex(POPULATION* p, int* c) {
+    if (flip(p->pMut)) {
+
+        int SelectedQueen, InsertionPoint;
+        do {
+            SelectedQueen = rnd(0, p->lchrom - 1);
+            InsertionPoint = rnd(0, p->lchrom - 1);
+        } while (SelectedQueen == InsertionPoint);
+        int temp = c[SelectedQueen];
+
+
+        if (InsertionPoint < SelectedQueen) { //Shift Right
+            int i;
+            for (i = SelectedQueen; i > InsertionPoint; i--) {
+                c[i] = c[i - 1];
+            }
+            c[i] = temp;
+        }
+        else { //Shift Left
+            int i;
+            for (i = SelectedQueen; i < InsertionPoint; i++) {
+                c[i] = c[i + 1];
+            }
+            c[i] = temp;
+        }
+
+    }
+}
+
 
 int muteX(POPULATION *p, int pa, int pb)
 {
