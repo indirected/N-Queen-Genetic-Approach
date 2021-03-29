@@ -7,6 +7,7 @@
 #define RANCONST 1.0E-9
 #include <stdio.h>
 #include <stdlib.h>
+#include<time.h>
 
 /* GLOBAL VARIABLES */
 
@@ -77,12 +78,15 @@ double f_random()
 void randomize(POPULATION *p)  /* Get seed number for random and start it up */
 {
 
-  printf("Enter seed random number (0.0..1.0) > "); 
+  /*printf("Enter seed random number (0.0..1.0) > "); 
   scanf("%lf",&p->randomseed);
   while ( p->randomseed < 0.0 || p->randomseed > 1.0){
     printf("ERROR: Enter seed random number again (0.0..1.0) > ");
     scanf("%lf\n",&p->randomseed);
-  }
+  }*/
+
+    srand(time(NULL));
+    p->randomseed = (double)rand() / RAND_MAX;
 
 
   warmup_random(p->randomseed);
