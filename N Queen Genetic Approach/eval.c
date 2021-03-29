@@ -46,6 +46,10 @@ double __eval(POPULATION* p, IPTR pj) {
         if (f1[i] == f1[i - 1]) t1++;
         if (f2[i] == f2[i - 1]) t2++;
     }
+
+    free(f1);
+    free(f2);
+
     return -t1 - t2;
 }
 
