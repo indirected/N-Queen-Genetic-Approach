@@ -33,8 +33,9 @@ double __eval(POPULATION* p, IPTR pj) {
     int t2 = 0;
     
     int len = p->lchrom;
-    int f1[25];
-    int f2[25];
+    int* f1 = (int*)malloc(p->lchrom * sizeof(int));
+    int* f2 = (int*)malloc(p->lchrom * sizeof(int));
+  
     for (int i = 0; i < len; i++) {
         f1[i] = pj->chrom[i] - i;
         f2[i] = 1 + len - pj->chrom[i] - i;

@@ -1,4 +1,4 @@
-#define MAXCITY 31  /* max no of cities*/
+#define MAXCITY 100  /* max no of cities*/
 typedef struct {
   int chrom[MAXCITY];   /* the chromosome */
   double fitness;   
