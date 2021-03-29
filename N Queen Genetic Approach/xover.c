@@ -5,7 +5,10 @@
 int rnd(int low, int high);
 int flip(double);
 int muteX(POPULATION *p, int pa, int pb);
-void Mutex(POPULATION* p, int* c);
+void Mutation(POPULATION* p, int* c);
+void SwapMutation(POPULATION* p, int* c);
+void DisplacementMutation(POPULATION* p, int* c);
+
 
 void crossover(POPULATION *p, IPTR p1, IPTR p2, IPTR c1, IPTR c2)
 {
@@ -69,13 +72,37 @@ void crossover(POPULATION *p, IPTR p1, IPTR p2, IPTR c1, IPTR c2)
         }
     }
 
-    Mutex(p, ci1);
-    Mutex(p, ci2);
+
+    Mutation(p, ci1);
+    Mutation(p, ci2);
+    
+}
+
+
+void Mutation(POPULATION* p, int* c) {
+    //DisplacementMutation(p, c);
+
+    SwapMutation(p, c);
+}
+
+
+
+void SwapMutation(POPULATION* p, int* c) {
+    if (flip(p->pMut)) {
+        int Point1, Point2;
+        do {
+            Point1 = rnd(0, p->lchrom - 1);
+            Point2 = rnd(0, p->lchrom - 1);
+        } while (Point1 == Point2);
+        int t = c[Point1];
+        c[Point1] = c[Point2];
+        c[Point2] = t;
+    }
 }
 
 
 //Displacement Mutation
-void Mutex(POPULATION* p, int* c) {
+void DisplacementMutation(POPULATION* p, int* c) {
     if (flip(p->pMut)) {
 
         int SelectedQueen, InsertionPoint;
