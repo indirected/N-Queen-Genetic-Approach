@@ -3,6 +3,7 @@
 #include "type.h"
 
 int roulette(IPTR pop, double sumFitness, int popsize);
+int Tournoment(IPTR pop, int popsize);
 void crossover(POPULATION *p, IPTR p1, IPTR p2, IPTR c1, IPTR c2);
 double eval(POPULATION *p, IPTR pj);
 
@@ -15,8 +16,11 @@ int generation(POPULATION *p, int t)
 
   for(i = 0; i < p->popSize; i += 2){
 
-    p1 = roulette(p->op, p->sumFitness, p->popSize);
-    p2 = roulette(p->op, p->sumFitness, p->popSize);
+    //p1 = roulette(p->op, p->sumFitness, p->popSize);
+    //p2 = roulette(p->op, p->sumFitness, p->popSize);
+
+      p1 = Tournoment(p->op, p->popSize);
+      p2 = Tournoment(p->op, p->popSize);
 
     pi = &(p->np[i]);
     piPlus1 = &(p->np[i+1]);
