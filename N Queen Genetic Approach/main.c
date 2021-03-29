@@ -17,7 +17,7 @@ main(int argc, char *argv[])
   p->gen = 0;
   if(argc != 2) erfunc("Usage: ga <inputfile name> ", argc);
   initialize(argv, p);
-  while(/*p->gen < p->maxGen && */p->highestEverFitness< (p->lchrom) * (p->lchrom - 1)/2){
+  while(/*p->gen < p->maxGen && */p->highestEverFitness< 1/*(p->lchrom) * (p->lchrom - 1)/2*/){
     p->gen++;
 	 generation(p, p->gen);
 	 statistics(p, p->np);
