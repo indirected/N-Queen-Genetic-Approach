@@ -85,6 +85,8 @@ void initData(char *Ifile, POPULATION *p)
   p->ofile = (char *) calloc (strlen(tmp)+1, sizeof(char));
   strcpy(p->ofile, tmp);
   printf("Save file is %s\n", p->ofile);
+  FILE* fp = fopen(p->ofile, "w");
+  fclose(fp);
 
 
   fclose(inpfl);
