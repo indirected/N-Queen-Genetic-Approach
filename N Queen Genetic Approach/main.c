@@ -33,7 +33,6 @@ main(int argc, char *argv[])
           printf("%d ", p->op[p->highestEverIndex].chrom[i]);
       }
 
-      //bahrami
 
     /*//To Test Eval
     POPULATION a;
