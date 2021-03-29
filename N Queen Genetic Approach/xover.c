@@ -22,8 +22,8 @@ void crossover(POPULATION *p, IPTR p1, IPTR p2, IPTR c1, IPTR c2)
     ci1 = c1->chrom;
     ci2 = c2->chrom;
 
-    PartiallyMappedCrossover(p, p1, p2, c1, c2);
-    //Order1Crossover(p, p1, p2, c1, c2);
+    //PartiallyMappedCrossover(p, p1, p2, c1, c2);
+    Order1Crossover(p, p1, p2, c1, c2);
 
 
     Mutation(p, ci1);
@@ -141,6 +141,7 @@ void Order1Crossover(POPULATION* p, IPTR p1, IPTR p2, IPTR c1, IPTR c2) {
                 }
                 if (k == EndPoint + 1) {
                     ci1[i] = pi2[j];
+                    j++;
                     break;
                 }
             }
@@ -148,10 +149,11 @@ void Order1Crossover(POPULATION* p, IPTR p1, IPTR p2, IPTR c1, IPTR c2) {
             for (; j2 < p->lchrom; j2++) {
                 int k;
                 for (k = StartPoint; k <= EndPoint; k++) {
-                    if (pi1[j] == pi2[k]) break;
+                    if (pi1[j2] == pi2[k]) break;
                 }
                 if (k == EndPoint + 1) {
-                    ci2[i] = pi1[j];
+                    ci2[i] = pi1[j2];
+                    j2++;
                     break;
                 }
             }
@@ -166,6 +168,7 @@ void Order1Crossover(POPULATION* p, IPTR p1, IPTR p2, IPTR c1, IPTR c2) {
                 }
                 if (k == EndPoint + 1) {
                     ci1[i] = pi2[j];
+                    j++;
                     break;
                 }
             }
@@ -173,10 +176,11 @@ void Order1Crossover(POPULATION* p, IPTR p1, IPTR p2, IPTR c1, IPTR c2) {
             for (; j2 < p->lchrom; j2++) {
                 int k;
                 for (k = StartPoint; k <= EndPoint; k++) {
-                    if (pi1[j] == pi2[k]) break;
+                    if (pi1[j2] == pi2[k]) break;
                 }
                 if (k == EndPoint + 1) {
-                    ci2[i] = pi1[j];
+                    ci2[i] = pi1[j2];
+                    j2++;
                     break;
                 }
             }
@@ -196,9 +200,9 @@ void Order1Crossover(POPULATION* p, IPTR p1, IPTR p2, IPTR c1, IPTR c2) {
 
 
 void Mutation(POPULATION* p, int* c) {
-    DisplacementMutation(p, c);
+    //DisplacementMutation(p, c);
 
-    //SwapMutation(p, c);
+    SwapMutation(p, c);
 }
 
 
