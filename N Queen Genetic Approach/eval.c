@@ -5,7 +5,7 @@
 
 double decode(IPTR pj, int index, int size);
 double binToDec(int *chrom, int l);
-
+double __eval(POPULATION* p, IPTR pj);
 
 int compare(const void* a, const void* b)
 {
