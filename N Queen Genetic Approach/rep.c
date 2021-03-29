@@ -28,6 +28,6 @@ void rawStat(FILE *fp, POPULATION *p, IPTR pop)
 	  p->avg, p->min);
   fprintf(fp," %3d %10.2lf %3d", p->highestEverGen,  p->highestEverFitness,
 	  p->highestEverIndex);
-  fprintf(fp," %10.2lf\n", pop[p->maxi].fitness);
+  fprintf(fp,"   %d-Queen\n", p->lchrom);
 }
 
