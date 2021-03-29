@@ -9,7 +9,7 @@ double eval(POPULATION *p, IPTR pj)
      /* Called from gen.c and init.c */
 {
     int GuardSum = 0;
-    int GuardMax = p->lchrom * (p->lchrom - 1);
+    int GuardMax = p->lchrom * (p->lchrom - 1) / 2;
     for (int i = 1; i < p->lchrom; i++) {
         GuardSum += GuardCount(pj, i,p->lchrom);
     }
@@ -52,7 +52,7 @@ void decToBin(int ad, int *barray, int size)
 //To Count the Queens that Threat each other from 0 to i
 int GuardCount(IPTR pi, int i,int popsize) {
     int count = 0;
-    for (int j = 0; j < popsize; j++) {
+    for (int j = 0; j < i; j++) {
         if (j != i) {
             int diff = pi->chrom[i] - pi->chrom[j];
             if (i - j == diff || i - j == -diff) count++;
