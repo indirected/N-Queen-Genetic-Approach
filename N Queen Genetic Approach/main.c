@@ -15,10 +15,10 @@ main(int argc, char *argv[])
   POPULATION *p = &population;
 
   p->gen = 0;
-  if(argc != 2) erfunc("Usage: ga <inputfile name> ", argc);
+  //if(argc != 2) erfunc("Usage: ga <inputfile name> ", argc);
   initialize(argv, p);
-  p->highestEverFitness = -_CRT_INT_MAX;
-  while(/*p->gen < p->maxGen && */p->highestEverFitness< 0/*(p->lchrom) * (p->lchrom - 1)/2*/){
+  //p->highestEverFitness = -_CRT_INT_MAX;
+  while(/*p->gen < p->maxGen && */p->highestEverFitness< 1/*(p->lchrom) * (p->lchrom - 1)/2*/){
     p->gen++;
 	 generation(p, p->gen);
 	 statistics(p, p->np);

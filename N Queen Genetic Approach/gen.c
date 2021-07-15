@@ -16,11 +16,16 @@ int generation(POPULATION *p, int t)
 
   for(i = 0; i < p->popSize; i += 2){
 
-    //p1 = roulette(p->op, p->sumFitness, p->popSize);
-    //p2 = roulette(p->op, p->sumFitness, p->popSize);
+      if(selectionmethod == RouletteSelection) {
+          p1 = roulette(p->op, p->sumFitness, p->popSize);
+          p2 = roulette(p->op, p->sumFitness, p->popSize);
+      }
+      else if (selectionmethod == TournomentSelection) {
+          p1 = Tournoment(p->op, p->popSize, p->lchrom);
+          p2 = Tournoment(p->op, p->popSize, p->lchrom);
+      }
 
-      p1 = Tournoment(p->op, p->popSize, p->lchrom);
-      p2 = Tournoment(p->op, p->popSize, p->lchrom);
+      
 
     pi = &(p->np[i]);
     piPlus1 = &(p->np[i+1]);

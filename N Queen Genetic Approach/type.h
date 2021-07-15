@@ -1,12 +1,32 @@
 #define MAXCITY 300  /* max no of cities*/
 typedef struct {
-  int chrom[MAXCITY];   /* the chromosome */
+  int *chrom;   /* the chromosome */
   double fitness;   
   int parent1;
   int parent2;
 } INDIVIDUAL;
 
 typedef INDIVIDUAL *IPTR;
+typedef enum 
+{
+	RouletteSelection = 1,
+	TournomentSelection = 2
+}SelectionMethod;
+SelectionMethod selectionmethod;
+
+typedef enum
+{
+	Swap = 1,
+	Displacement = 2
+} MutationMethod;
+MutationMethod mutationmethod;
+
+typedef enum 
+{
+	PartiallyMapped = 1,
+	OrderOne = 2
+} CrossoverMethod;
+CrossoverMethod crossovermethod;
 
 typedef struct {
 

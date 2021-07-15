@@ -15,16 +15,16 @@ int compare(const void* a, const void* b)
 double eval(POPULATION *p, IPTR pj) 
      /* Called from gen.c and init.c */
 {
-    //int GuardSum = 0;
-    //int GuardMax = p->lchrom * (p->lchrom - 1) / 2;
-    //for (int i = 1; i < p->lchrom; i++) {
-    //    GuardSum += GuardCount(pj, i,p->lchrom);
-    //}
-    ////printf("%d", GuardSum);
+    int GuardSum = 0;
+    int GuardMax = p->lchrom * (p->lchrom - 1) / 2;
+    for (int i = 1; i < p->lchrom; i++) {
+        GuardSum += GuardCount(pj, i,p->lchrom);
+    }
+    //printf("%d", GuardSum);
 
-    //return 1 - ((double)GuardSum / GuardMax);
-    ////return (double)GuardMax - GuardSum;
-    return (double)__eval(p, pj);
+    return 1 - ((double)GuardSum / GuardMax);
+    //return (double)GuardMax - GuardSum;
+    //return (double)__eval(p, pj);
 }
 
 

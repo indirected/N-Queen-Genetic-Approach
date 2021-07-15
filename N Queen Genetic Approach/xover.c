@@ -22,8 +22,10 @@ void crossover(POPULATION *p, IPTR p1, IPTR p2, IPTR c1, IPTR c2)
     ci1 = c1->chrom;
     ci2 = c2->chrom;
 
-    //PartiallyMappedCrossover(p, p1, p2, c1, c2);
-    Order1Crossover(p, p1, p2, c1, c2);
+    if(crossovermethod == PartiallyMapped)
+        PartiallyMappedCrossover(p, p1, p2, c1, c2);
+    else if(crossovermethod == OrderOne)
+        Order1Crossover(p, p1, p2, c1, c2);
 
 
     Mutation(p, ci1);
@@ -200,9 +202,10 @@ void Order1Crossover(POPULATION* p, IPTR p1, IPTR p2, IPTR c1, IPTR c2) {
 
 
 void Mutation(POPULATION* p, int* c) {
-    //DisplacementMutation(p, c);
-
-    SwapMutation(p, c);
+    if(mutationmethod == Displacement)
+        DisplacementMutation(p, c);
+    else if(mutationmethod == Swap)
+        SwapMutation(p, c);
 }
 
 

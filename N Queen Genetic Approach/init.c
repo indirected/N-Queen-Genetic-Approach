@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>  /* for calloc */
 #include <string.h>
-
 #include "type.h"
+
+//Random Functions -> random.c
 int flip(double p);
 void randomize(POPULATION *p);
 int* CreateShuffledArray(int);
@@ -48,48 +49,69 @@ void initData(char *Ifile, POPULATION *p)
 	  pcross :   crossover probability
 	  pmut   :   mutation probability           */
   int i;
-  FILE *inpfl;
+  //FILE *inpfl;
   char tmp[1024];
 
-  if( (inpfl = fopen(Ifile,"r")) == NULL){
+  /*if( (inpfl = fopen(Ifile,"r")) == NULL){
 	 printf("error in opening file %s \n", Ifile);
 	 exit(1);
-  }
+  }*/
 
-  printf(" Enter population size - popSize-> ");
-  fscanf(inpfl,"%d",&p->popSize);
+  printf("Enter chromosome length.(The N in N-Queen) - lChrom-> ");
+  scanf("%d", &p->lchrom);
+  //fscanf(inpfl,"%d",&p->lchrom);
+
+  printf("Enter population size - popSize-> ");
+  scanf("%d", &p->popSize);
+  //fscanf(inpfl,"%d",&p->popSize);
   if(p->popSize % 2 != 0) {
 	 p->popSize++;
+	 printf("\nNote population size must be even. New popoulation size: %i\n", p->popSize);
   }
-  printf("\nNote population size must be even: %i", p->popSize);
+  
 
-  printf(" Enter chromosome length - lChrom-> ");
-  fscanf(inpfl,"%d",&p->lchrom);
-  printf("\n");
 
-  printf(" Enter max. generations - maxGen-> ");
-  fscanf(inpfl,"%d",&p->maxGen);
-  printf("\n");
+  printf("Enter max. generations - maxGen-> ");
+  scanf("%d", &p->maxGen);
+  //fscanf(inpfl,"%d",&p->maxGen);
+  printf("Enter Selection Method.(1 or 2)\n\t 1.Roulette Wheel\n\t 2.Tournoment\n");
+  do{
+	  printf("selectionmethod-> ");
+	  scanf("%d", &selectionmethod); 
+  } while(selectionmethod != 1 && selectionmethod != 2);
+  
 
-  printf(" Enter crossover prob - pCross-> ");
-  fscanf(inpfl,"%lf",&p->pCross);
-  printf("\n");
+  printf("Enter Crossover Method.(1 or 2)\n\t 1.Partially Mapped Crossover\n\t 2.Order One Crossover\n");
+  do { 
+	  printf("crossovermethod-> ");
+	  scanf("%d", &crossovermethod); 
+  }
+  while (crossovermethod != 1 && crossovermethod != 2);
 
-  printf(" Enter mutation prob - pMut-> ");
-  fscanf(inpfl,"%lf",&p->pMut);
-  printf("\n");
 
-  printf(" Enter file name for graph output -fname-> ");
+  printf("Enter Mutation Method.(1 or 2)\n\t 1.Swap Mutation\n\t 2.Displacement Mutation\n");
+  do {
+	  printf("mutationmethod-> ");
+	  scanf("%d", &mutationmethod); 
+  } while (mutationmethod != 1 && mutationmethod != 2);
 
-  fscanf(inpfl,"%s", tmp);
-  p->ofile = (char *) calloc (strlen(tmp)+1, sizeof(char));
+  printf("Enter crossover probability - pCross-> ");
+  scanf("%lf", &p->pCross);
+  //fscanf(inpfl,"%lf",&p->pCross);
+
+  printf("Enter mutation probability - pMut-> ");
+  scanf("%lf", &p->pMut);
+  //fscanf(inpfl,"%lf",&p->pMut);
+
+  printf("Enter file name for graph output -fname-> ");
+  scanf("%s", tmp);
+  //fscanf(inpfl,"%s", tmp);
+  p->ofile = (char *)calloc(strlen(tmp)+1, sizeof(char));
   strcpy(p->ofile, tmp);
-  printf("Save file is %s\n", p->ofile);
+  //printf("Save file is %s\n", p->ofile);
   FILE* fp = fopen(p->ofile, "w");
-  fclose(fp);
+  //fclose(fp);
 
-
-  fclose(inpfl);
   printf("\n");
 
   randomize(p); /* initialize random number generator */
@@ -109,16 +131,16 @@ void initPop(POPULATION *p)
   FILE *fp;
   double f1;
   int* currentShuffle;
-  p->op = (IPTR) calloc (p->popSize, sizeof(INDIVIDUAL));
-  p->np = (IPTR) calloc (p->popSize, sizeof(INDIVIDUAL));
+  p->op = (IPTR)calloc(p->popSize, sizeof(INDIVIDUAL));
+  p->np = (IPTR)calloc(p->popSize, sizeof(INDIVIDUAL));
 
 
-  for (i = 0; i < p->popSize; i++){
+  for(i = 0; i < p->popSize; i++){
 	 pi = &(p->op[i]);
-	 *pi->chrom = (int *) calloc (p->lchrom, sizeof(int));
+	 pi->chrom = (int *)calloc(p->lchrom, sizeof(int));
 
 	 pj = &(p->np[i]);
-	 *pj->chrom = (int *) calloc (p->lchrom, sizeof(int));
+	 pj->chrom = (int *)calloc(p->lchrom, sizeof(int));
 
 	 currentShuffle = CreateShuffledArray(p->lchrom);
 	 for (j = 0; j < p->lchrom; j++){

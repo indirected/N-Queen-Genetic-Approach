@@ -89,7 +89,7 @@ void randomize(POPULATION *p)  /* Get seed number for random and start it up */
     p->randomseed = (double)rand() / RAND_MAX;
 
 
-  warmup_random(p->randomseed);
+    warmup_random(p->randomseed);
 }
 
 
