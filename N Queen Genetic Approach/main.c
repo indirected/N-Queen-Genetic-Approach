@@ -18,6 +18,11 @@ main(int argc, char *argv[])
   //if(argc != 2) erfunc("Usage: ga <inputfile name> ", argc);
   initialize(argv, p);
   //p->highestEverFitness = -_CRT_INT_MAX;
+  
+
+
+
+
   while(/*p->gen < p->maxGen && */p->highestEverFitness< 1/*(p->lchrom) * (p->lchrom - 1)/2*/){
     p->gen++;
 	 generation(p, p->gen);
@@ -28,10 +33,48 @@ main(int argc, char *argv[])
     p->np = tmp;
   }
   printf("\n");
+  printf("==================================================\n");
 
-      for (int i = 0; i < p->lchrom; i++) {
-          printf("%d ", p->op[p->highestEverIndex].chrom[i]);
-      }
+    printf("Final Solution List:");
+    for (int i = 0; i < p->lchrom; i++) {
+        printf("%d ", p->op[p->highestEverIndex].chrom[i]);
+    }
+
+    FILE* fp;
+    if ((fp = fopen(p->ofile, "a")) == NULL) {
+        printf("error in opening file %s \n", p->ofile);
+        exit(1);
+    }
+    else {
+        fprintf(fp, "==================================================\n");
+        fprintf(fp, "Final Solution List:\n");
+        for (int i = 0; i < p->lchrom; i++) {
+            fprintf(fp, "%d ", p->op[p->highestEverIndex].chrom[i]);
+        }
+        fprintf(fp, "\n");
+        fprintf(fp, "==================================================\n");
+        fprintf(fp, "Chess Board:\n");
+        fprintf(fp, "  #");
+        for (int i = 0; i < p->lchrom; i++) {
+            fprintf(fp, "|%3d", i+1);
+        }
+        fprintf(fp, "|#");
+
+
+        for (int i = 0; i < p->lchrom; i++) {
+            fprintf(fp, "\n%3d", i+1);
+            for(int j = 0; j < p->op[p->highestEverIndex].chrom[i] - 1; j++) fprintf(fp, "|   ");
+            fprintf(fp, "|%3d", p->op[p->highestEverIndex].chrom[i]);
+            for (int j = 0; j < p->lchrom - (p->op[p->highestEverIndex].chrom[i]); j++) fprintf(fp, "|   ");
+            fprintf(fp, "|#");
+
+
+        }
+
+
+
+        fclose(fp);
+    }
 
       //bahrami
 

@@ -158,11 +158,8 @@
     <ClInclude Include="type.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="GA.DSK" />
-    <None Include="GA.EXE" />
     <None Include="infile" />
     <None Include="ofile" />
-    <None Include="rx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

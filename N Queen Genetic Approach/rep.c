@@ -17,17 +17,18 @@ void report(int gen, POPULATION *p, IPTR  pop)
 	 rawStat(fp, p, pop);
 	 fclose(fp);
   }
-  rawStat(stdout, p, pop);
+  if(gen%100 == 0 || p->highestEverFitness == 1)
+	rawStat(stdout, p, pop);
 
 
 }
 
 void rawStat(FILE *fp, POPULATION *p, IPTR pop)
 {
-  fprintf(fp," %3d %10.2lf %10.2lf %10.2lf ", p->gen, p->max,
-	  p->avg, p->min);
-  fprintf(fp," %3d %10.2lf %3d", p->highestEverGen,  p->highestEverFitness,
-	  p->highestEverIndex);
-  fprintf(fp,"   %d-Queen\n", p->lchrom);
+	fprintf(fp," %5d | %10.5lf |%10.5lf |%10.5lf|", p->gen, p->max,
+		p->avg, p->min);
+	fprintf(fp,"%12d|%12.5lf|%8d\n", p->highestEverGen,  p->highestEverFitness,
+		p->highestEverIndex);
+	//fprintf(fp,"   %d-Queen\n", p->lchrom);
 }
 

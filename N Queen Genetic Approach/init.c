@@ -158,7 +158,7 @@ void initReport(POPULATION *p)
 {
   FILE *fp;
   int i, k;
-
+  printf("==================================================\n");
   printf("\n\nPopulation Size(popsize)  %d\n", p->popSize);
   printf("Chromosome length (lchrom)  %d\n", p->lchrom);
   printf("Maximum num of generations(maxgen)  %d\n", p->maxGen);
@@ -168,6 +168,19 @@ void initReport(POPULATION *p)
   printf("Maximum Fitness  %lf\n", p->max);
   printf("Average Fitness  %lf\n", p->avg);
   printf("Minimum Fitness  %lf\n", p->min);
+  printf("==================================================\n");
+
+
+  if ((fp = fopen(p->ofile, "a")) == NULL) {
+	  printf("error in opening file %s \n", p->ofile);
+	  exit(1);
+  }
+  else {
+	  fprintf(fp, "   gen |  CurGenMax |CurGenAvg  |CurGenMin |HghstEverGen|HghstEverFit|HghstEverIdx\n");
+	  printf("   gen |  CurGenMax  |CurGenAvg  |CurGenMin|HghstEverGen|HghstEverFit|HghstEverIdx\n");
+	  fclose(fp);
+  }
+
 
   if( (fp = fopen(p->ofile, "a")) == NULL){
 	 printf("error in opening file %s \n", p->ofile);

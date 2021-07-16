@@ -55,19 +55,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="GA.DSK">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="GA.EXE">
-      <Filter>Source Files</Filter>
-    </None>
     <None Include="infile">
       <Filter>Source Files</Filter>
     </None>
     <None Include="ofile">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="rx">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
