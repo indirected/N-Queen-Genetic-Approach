@@ -3,7 +3,7 @@
 #include "conio.h"
 #include "type.h"
 int erfunc(char *s, int val);
-void initialize(char *argv[], POPULATION *p);
+void initialize(char argv[], POPULATION *p);
 void generation(POPULATION *p, int gen);
 void report(int gen, POPULATION *p, IPTR  pop);
 void statistics(POPULATION *p, IPTR pop);
@@ -16,7 +16,7 @@ main(int argc, char *argv[])
 
   p->gen = 0;
   //if(argc != 2) erfunc("Usage: ga <inputfile name> ", argc);
-  initialize(argv, p);
+  initialize("infile", p);
   //p->highestEverFitness = -_CRT_INT_MAX;
   
 

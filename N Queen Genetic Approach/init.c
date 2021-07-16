@@ -16,19 +16,20 @@ void rawStat(FILE *fp, POPULATION *p, IPTR pop);
 double eval(POPULATION *p, IPTR pi);
 
 
-void initData(char *inputFile, POPULATION *p);
+void initData(POPULATION *p);
 void initPop(POPULATION *p);
 void initReport(POPULATION *p);
 
-void initialize(char *argv[], POPULATION *p)
+void initialize(char argv[], POPULATION *p)
 { /* initialize everything */
-
+  
+  /*
   char *Ifile;
-  int  nameLength = strlen(argv[1]);
+  int  nameLength = strlen("infile");
   Ifile = (char *) calloc(nameLength + 1, sizeof(char));
   strcpy(Ifile, argv[1]);
-
-  initData(Ifile, p);
+  */
+  initData(p);
   printf("after initData\n");
 
   initPop(p);
@@ -40,7 +41,7 @@ void initialize(char *argv[], POPULATION *p)
   initReport(p);
 }
 
-void initData(char *Ifile, POPULATION *p)
+void initData(POPULATION *p)
 { /* inittialize global params,
 
 	  popsize:   population size
