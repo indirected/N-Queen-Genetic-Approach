@@ -52,6 +52,22 @@ void initData(char *Ifile, POPULATION *p)
   //FILE *inpfl;
   char tmp[1024];
 
+
+  ////Best Values
+  //char tmp[] = "ofile";
+  //p->lchrom = 1000;
+  //p->popSize = 50;
+  //selectionmethod = TournamentSelection;
+  //crossovermethod = PartiallyMapped;
+  //mutationmethod = Swap;
+  //p->pCross = 0.6;
+  //p->pMut = 0.4;
+
+
+
+
+
+
   /*if( (inpfl = fopen(Ifile,"r")) == NULL){
 	 printf("error in opening file %s \n", Ifile);
 	 exit(1);
@@ -60,6 +76,7 @@ void initData(char *Ifile, POPULATION *p)
   printf("Enter chromosome length.(The N in N-Queen) - lChrom-> ");
   scanf("%d", &p->lchrom);
   //fscanf(inpfl,"%d",&p->lchrom);
+
 
   printf("Enter population size - popSize-> ");
   scanf("%d", &p->popSize);
@@ -74,11 +91,14 @@ void initData(char *Ifile, POPULATION *p)
   printf("Enter max. generations - maxGen-> ");
   scanf("%d", &p->maxGen);
   //fscanf(inpfl,"%d",&p->maxGen);
-  printf("Enter Selection Method.(1 or 2)\n\t 1.Roulette Wheel\n\t 2.Tournoment\n");
+
+
+  printf("Enter Selection Method.(1 or 2)\n\t 1.Roulette Wheel\n\t 2.Tournament\n");
   do{
 	  printf("selectionmethod-> ");
 	  scanf("%d", &selectionmethod); 
   } while(selectionmethod != 1 && selectionmethod != 2);
+
   
 
   printf("Enter Crossover Method.(1 or 2)\n\t 1.Partially Mapped Crossover\n\t 2.Order One Crossover\n");
@@ -95,22 +115,28 @@ void initData(char *Ifile, POPULATION *p)
 	  scanf("%d", &mutationmethod); 
   } while (mutationmethod != 1 && mutationmethod != 2);
 
+
   printf("Enter crossover probability - pCross-> ");
   scanf("%lf", &p->pCross);
   //fscanf(inpfl,"%lf",&p->pCross);
+
 
   printf("Enter mutation probability - pMut-> ");
   scanf("%lf", &p->pMut);
   //fscanf(inpfl,"%lf",&p->pMut);
 
+
   printf("Enter file name for graph output -fname-> ");
   scanf("%s", tmp);
   //fscanf(inpfl,"%s", tmp);
+
+  
+
   p->ofile = (char *)calloc(strlen(tmp)+1, sizeof(char));
   strcpy(p->ofile, tmp);
   //printf("Save file is %s\n", p->ofile);
   FILE* fp = fopen(p->ofile, "w");
-  //fclose(fp);
+  fclose(fp);
 
   printf("\n");
 
@@ -136,6 +162,7 @@ void initPop(POPULATION *p)
 
 
   for(i = 0; i < p->popSize; i++){
+	 
 	 pi = &(p->op[i]);
 	 pi->chrom = (int *)calloc(p->lchrom, sizeof(int));
 
@@ -177,7 +204,7 @@ void initReport(POPULATION *p)
   }
   else {
 	  fprintf(fp, "   gen |  CurGenMax |CurGenAvg  |CurGenMin |HghstEverGen|HghstEverFit|HghstEverIdx\n");
-	  printf("   gen |  CurGenMax  |CurGenAvg  |CurGenMin|HghstEverGen|HghstEverFit|HghstEverIdx\n");
+	  printf("   gen |  CurGenMax |CurGenAvg  |CurGenMin |HghstEverGen|HghstEverFit|HghstEverIdx\n");
 	  fclose(fp);
   }
 

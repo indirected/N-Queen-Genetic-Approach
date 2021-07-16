@@ -35,7 +35,7 @@ main(int argc, char *argv[])
   printf("\n");
   printf("==================================================\n");
 
-    printf("Final Solution List:");
+    printf("Final Solution List:\n");
     for (int i = 0; i < p->lchrom; i++) {
         printf("%d ", p->op[p->highestEverIndex].chrom[i]);
     }

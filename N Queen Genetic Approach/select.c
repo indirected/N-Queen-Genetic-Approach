@@ -23,7 +23,7 @@ int roulette(IPTR pop, double sumFitness, int popsize)
     return i;
 }
 
-int Tournoment(IPTR pop, int popsize, int lchrom) {
+int Tournament(IPTR pop, int popsize, int lchrom) {
     int t1, t2;
     do {
         t1 = rnd(0, popsize - 1);

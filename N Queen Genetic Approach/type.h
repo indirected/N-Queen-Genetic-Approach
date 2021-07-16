@@ -7,10 +7,11 @@ typedef struct {
 } INDIVIDUAL;
 
 typedef INDIVIDUAL *IPTR;
+
 typedef enum 
 {
 	RouletteSelection = 1,
-	TournomentSelection = 2
+	TournamentSelection = 2
 }SelectionMethod;
 SelectionMethod selectionmethod;
 
